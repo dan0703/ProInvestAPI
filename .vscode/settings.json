@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin/Release/net7.0/publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/c1b03e31-1d37-4baf-8df3-67f318f162e7/resourceGroups/ProInvest/providers/Microsoft.Web/sites/ProInvestAPI"
+}
