@@ -13,6 +13,38 @@ namespace ProInvestAPI.Business{
             _connectionModel = connectionModel;
         }
 
+        public async Task<UserDomain> Login(LoginDomain login)
+        {
+            bool canConnect = await _connectionModel.Database.CanConnectAsync();
+            try
+            {
+                if (!canConnect)
+                {
+                    throw new Exception("No se pudo establecer conexión con la base de datos.");
+                }
+                else
+                {
+                    var user = await _connectionModel.Users.Where(x => x.Email == login.Email && x.Password == login.Password).FirstOrDefaultAsync();
+
+                    if (user == null)
+                    {
+                        return null;
+                    }else{
+                        return new UserDomain
+                        {
+                            IdUser = user.IdUser,
+                            Username = user.Username,
+                            Email = user.Email,
+                        };
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
         public async Task<string> Register(UserDomain user)
         {
             using (var transaction = await _connectionModel.Database.BeginTransactionAsync())
