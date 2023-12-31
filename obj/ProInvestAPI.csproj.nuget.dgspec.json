@@ -1,31 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/danjoshuasegura/Documents/ProInvestAPI/ProInvestAPI.csproj": {}
+    "/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/ProInvestAPI.csproj": {}
   },
   "projects": {
-    "/Users/danjoshuasegura/Documents/ProInvestAPI/ProInvestAPI.csproj": {
+    "/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/ProInvestAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/danjoshuasegura/Documents/ProInvestAPI/ProInvestAPI.csproj",
+        "projectUniqueName": "/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/ProInvestAPI.csproj",
         "projectName": "ProInvestAPI",
-        "projectPath": "/Users/danjoshuasegura/Documents/ProInvestAPI/ProInvestAPI.csproj",
+        "projectPath": "/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/ProInvestAPI.csproj",
         "packagesPath": "/Users/danjoshuasegura/.nuget/packages/",
-        "outputPath": "/Users/danjoshuasegura/Documents/ProInvestAPI/obj/",
+        "outputPath": "/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/danjoshuasegura/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/sdk/7.0.311/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -36,12 +35,26 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.0-beta.2, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql.Design": {
+              "target": "Package",
+              "version": "[1.1.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -67,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.311/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
