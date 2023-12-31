@@ -1,0 +1,12 @@
+/Users/danjoshuasegura/Documents/ProInvestAPI/bin/Release/net7.0/publish/ProInvestAPI
+/Users/danjoshuasegura/Documents/ProInvestAPI/bin/Release/net7.0/publish/appsettings.Development.json
+/Users/danjoshuasegura/Documents/ProInvestAPI/bin/Release/net7.0/publish/appsettings.json
+/Users/danjoshuasegura/Documents/ProInvestAPI/bin/Release/net7.0/publish/ProInvestAPI.dll
+/Users/danjoshuasegura/Documents/ProInvestAPI/bin/Release/net7.0/publish/ProInvestAPI.deps.json
+/Users/danjoshuasegura/Documents/ProInvestAPI/bin/Release/net7.0/publish/ProInvestAPI.runtimeconfig.json
+/Users/danjoshuasegura/Documents/ProInvestAPI/bin/Release/net7.0/publish/ProInvestAPI.pdb
+/Users/danjoshuasegura/Documents/ProInvestAPI/bin/Release/net7.0/publish/Microsoft.AspNetCore.OpenApi.dll
+/Users/danjoshuasegura/Documents/ProInvestAPI/bin/Release/net7.0/publish/Microsoft.OpenApi.dll
+/Users/danjoshuasegura/Documents/ProInvestAPI/bin/Release/net7.0/publish/Swashbuckle.AspNetCore.Swagger.dll
+/Users/danjoshuasegura/Documents/ProInvestAPI/bin/Release/net7.0/publish/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/danjoshuasegura/Documents/ProInvestAPI/bin/Release/net7.0/publish/Swashbuckle.AspNetCore.SwaggerUI.dll
