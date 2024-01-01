@@ -106,3 +106,8 @@
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/obj/Release/net8.0/ProInvestAPI.pdb
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/obj/Release/net8.0/ProInvestAPI.genruntimeconfig.cache
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/obj/Release/net8.0/ref/ProInvestAPI.dll
+/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/System.IdentityModel.Tokens.Jwt.dll

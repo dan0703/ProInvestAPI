@@ -45,6 +45,32 @@ namespace ProInvestAPI.Business{
             }
         }
 
+        public (int, List<UserDomain>, string) GetUsers()
+        {
+            int code = 200;
+            List<UserDomain> userList = new List<UserDomain>();
+            string report = "";
+            try
+            {
+                var listTemp = _connectionModel.Users.ToList();
+                foreach (var item in listTemp)
+                {
+                    UserDomain user = new UserDomain
+                    {
+                        Username = item.Username,
+                        IdUser = item.IdUser
+                    };
+                    userList.Add(user);
+                }
+            }
+            catch (Exception e)
+            {
+                code = 500;
+                report = e.Message;
+            }
+            return (code, userList, report);
+        }
+
         public async Task<string> Register(UserDomain user)
         {
             using (var transaction = await _connectionModel.Database.BeginTransactionAsync())

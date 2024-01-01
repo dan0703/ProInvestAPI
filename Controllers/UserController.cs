@@ -16,6 +16,24 @@ namespace ProInvestAPI.Controllers{
 
         private readonly UserProvider _user = login;
 
+        [HttpGet("GetUsers")]
+        public ActionResult GetUsertest()
+        {
+            (int code, List<UserDomain> userList, string report) = _user.GetUsers();
+            if (code == 200)
+            {
+                return Ok(
+                    userList
+                );
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+
+
         [ApiExplorerSettings(IgnoreApi = false)]
         [HttpPost("LoginUser")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -93,4 +111,3 @@ namespace ProInvestAPI.Controllers{
         }
     }
 }
-
