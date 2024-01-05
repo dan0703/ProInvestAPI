@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "z3A3g8AX1lUr5ePcKHsl7phJWBDZn9sF3pP1ogXUNLrvGMITXrxEOb2vxf7VSctfeohxZWHXj/3+ryada2+IRQ==",
+  "dgSpecHash": "l7Hi9MunNnNLfDQKATB7nIflJlQOQI2aw82CRgRJaIEjioR35aaO0+TI52do9SmObWH2z7l6fSzXkBtcyC5A5g==",
   "success": true,
   "projectFilePath": "/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/ProInvestAPI.csproj",
   "expectedPackageFiles": [
@@ -41,6 +41,7 @@
     "/Users/danjoshuasegura/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/mysqlconnector/2.3.1/mysqlconnector.2.3.1.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/netstandard.library/1.6.1/netstandard.library.1.6.1.nupkg.sha512",
+    "/Users/danjoshuasegura/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/pomelo.entityframeworkcore.mysql/8.0.0-beta.2/pomelo.entityframeworkcore.mysql.8.0.0-beta.2.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/pomelo.entityframeworkcore.mysql.design/1.1.2/pomelo.entityframeworkcore.mysql.design.1.1.2.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -69,6 +70,8 @@
     "/Users/danjoshuasegura/.nuget/packages/system.collections/4.3.0/system.collections.4.3.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/system.collections.concurrent/4.3.0/system.collections.concurrent.4.3.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
+    "/Users/danjoshuasegura/.nuget/packages/system.collections.nongeneric/4.3.0/system.collections.nongeneric.4.3.0.nupkg.sha512",
+    "/Users/danjoshuasegura/.nuget/packages/system.collections.specialized/4.3.0/system.collections.specialized.4.3.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/system.composition/6.0.0/system.composition.6.0.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/system.composition.attributedmodel/6.0.0/system.composition.attributedmodel.6.0.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/system.composition.convention/6.0.0/system.composition.convention.6.0.0.nupkg.sha512",
@@ -131,7 +134,8 @@
     "/Users/danjoshuasegura/.nuget/packages/system.threading.tasks.extensions/4.3.0/system.threading.tasks.extensions.4.3.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/system.threading.timer/4.3.0/system.threading.timer.4.3.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "/Users/danjoshuasegura/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512"
+    "/Users/danjoshuasegura/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
+    "/Users/danjoshuasegura/.nuget/packages/twilio/6.15.2/twilio.6.15.2.nupkg.sha512"
   ],
   "logs": []
 }

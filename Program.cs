@@ -1,38 +1,59 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using ProInvestAPI.Business;
+using ProInvestAPI.Domain;
 using ProInvestAPI.Models;
+using System;
+using System.IO;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-//MySqlConfiguration
-builder.Services.AddDbContext<ProInvestDbContext>(options =>
-                options.UseMySql(
-                    "Server=viaduct.proxy.rlwy.net;Port=26597;Database=ProInvestDB;User=proInvest;Password=Pinv02@c34d;Protocol=TCP;", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql"
-                )));
-
-//add controllers
-builder.Services.AddScoped<UserProvider>();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+public class Program
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder
+                    .UseStartup<Startup>() // Utiliza la clase Startup
+                    .ConfigureServices((hostContext, services) =>
+                    {
+                        // Configuración adicional de servicios si es necesario
+                        services.AddControllers();
+                        services.AddEndpointsApiExplorer();
+                        services.AddSwaggerGen();
+
+                        // Obtén el IConfiguration del hostContext
+                        var configuration = hostContext.Configuration;
+
+                        services.Configure<TwilioSettings>(configuration.GetSection("TwilioSettings"));
+                        services.AddSingleton(configuration.Get<TwilioSettings>());
+
+                        services.AddCors(options =>
+                        {
+                            options.AddPolicy("AllowProInvestApp", builder =>
+                            {
+                                builder.WithOrigins("https://proinvestapi.azurewebsites.net")
+                                       .AllowAnyHeader()
+                                       .AllowAnyMethod();
+                            });
+                        });
+
+                        services.AddDbContext<ProInvestDbContext>(options =>
+                            options.UseMySql("Server=viaduct.proxy.rlwy.net;Port=26597;Database=ProInvestDB;User=proInvest;Password=Pinv02@c34d;Protocol=TCP;",
+                                            Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql")));
+
+                        services.AddScoped<UserProvider>();
+                    })
+                    .ConfigureAppConfiguration((context, config) =>
+                    {
+                        // Configuración adicional si es necesario
+                    });
+            });
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

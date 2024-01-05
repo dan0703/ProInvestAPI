@@ -15,10 +15,13 @@
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/Microsoft.IdentityModel.Tokens.dll
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/Microsoft.OpenApi.dll
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/MySqlConnector.dll
+/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/Newtonsoft.Json.dll
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/Pomelo.EntityFrameworkCore.MySql.dll
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/Pomelo.EntityFrameworkCore.MySql.Design.dll
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/Swashbuckle.AspNetCore.Swagger.dll
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/System.IdentityModel.Tokens.Jwt.dll
+/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/Twilio.dll
+/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/ProInvestAPI.xml
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/publish/ProInvestAPI.deps.json
