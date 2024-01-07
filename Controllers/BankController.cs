@@ -8,24 +8,26 @@ namespace ProInvestAPI.Controllers{
     
     [ApiController]
     [Route("[controller]")]
-    public class InvestmentTypeController(IConfiguration config, InvestmentTypeProvider investment) : ControllerBase
+    public class BankController(IConfiguration config, BankProvider bank) : ControllerBase
     {
         private IConfiguration config = config;
-        private InvestmentTypeProvider _investmentType = investment;
+
+        private BankProvider _bank = bank;
+
 
         [ApiExplorerSettings(IgnoreApi = false)]
-        [HttpGet("GetInvestmentTypes")]
+        [HttpGet("GetBankList")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<ActionResult> GetInvestmentTypes()
+        public async Task<ActionResult> GetBankList()
         {
             try
             {
-                (int code, List<InvestmentType> investmentTypes, string report) = _investmentType.GetInvestmentTypes();
+                (int code, List<Bank> bankList, string report) = _bank.GetBankList();
                 if (code == 200)
                 {
                     return Ok(
-                        investmentTypes
+                        bankList
                     );
                 }
                 else

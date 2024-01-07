@@ -51,6 +51,10 @@ public class Program
 
                         services.AddScoped<UserProvider>();
                         services.AddScoped<InvestmentTypeProvider>();
+                        services.AddScoped<BankProvider>();
+                        services.AddScoped<DirectionProvider>();
+                        services.AddScoped<OriginOfFoundsProvider>();
+
                     })
                     .ConfigureAppConfiguration((context, config) =>
                     {

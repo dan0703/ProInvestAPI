@@ -21,6 +21,8 @@ public partial class InvestmentRequest
 
     public int OriginOfFounds { get; set; }
 
+    public int Bank { get; set; }
+
     public virtual Client Client { get; set; } = null!;
 
     public virtual ICollection<Document> Documents { get; set; } = new List<Document>();

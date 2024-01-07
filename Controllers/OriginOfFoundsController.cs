@@ -8,24 +8,24 @@ namespace ProInvestAPI.Controllers{
     
     [ApiController]
     [Route("[controller]")]
-    public class InvestmentTypeController(IConfiguration config, InvestmentTypeProvider investment) : ControllerBase
+    public class OriginOfFoundsController(IConfiguration config, OriginOfFoundsProvider originOfFounds) : ControllerBase
     {
         private IConfiguration config = config;
-        private InvestmentTypeProvider _investmentType = investment;
+        private OriginOfFoundsProvider _originOfFounds = originOfFounds;
 
         [ApiExplorerSettings(IgnoreApi = false)]
-        [HttpGet("GetInvestmentTypes")]
+        [HttpGet("GetOriginsOfFounds")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<ActionResult> GetInvestmentTypes()
+        public async Task<ActionResult> GetOriginsOfFounds()
         {
             try
             {
-                (int code, List<InvestmentType> investmentTypes, string report) = _investmentType.GetInvestmentTypes();
+                (int code, List<OriginOfFound> originsOfFounds, string report) = _originOfFounds.GetOriginsOfFounds();
                 if (code == 200)
                 {
                     return Ok(
-                        investmentTypes
+                        originsOfFounds
                     );
                 }
                 else

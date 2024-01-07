@@ -9,5 +9,7 @@ public partial class Municipality
 
     public string Name { get; set; } = null!;
 
+    public int IdState { get; set; }
+
     public virtual ICollection<PostalCode> PostalCodes { get; set; } = new List<PostalCode>();
 }

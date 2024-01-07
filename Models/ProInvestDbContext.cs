@@ -18,6 +18,8 @@ public partial class ProInvestDbContext : DbContext
 
     public virtual DbSet<Adress> Adresses { get; set; }
 
+    public virtual DbSet<Bank> Banks { get; set; }
+
     public virtual DbSet<Client> Clients { get; set; }
 
     public virtual DbSet<Document> Documents { get; set; }
@@ -84,6 +86,13 @@ public partial class ProInvestDbContext : DbContext
                 .HasForeignKey(d => d.NeighborhoodId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("neighborhoodId");
+        });
+
+        modelBuilder.Entity<Bank>(entity =>
+        {
+            entity.HasKey(e => e.IdBank).HasName("PRIMARY");
+
+            entity.Property(e => e.BankName).HasMaxLength(45);
         });
 
         modelBuilder.Entity<Client>(entity =>
@@ -209,6 +218,7 @@ public partial class ProInvestDbContext : DbContext
             entity.Property(e => e.IdInvestmentRequest)
                 .ValueGeneratedNever()
                 .HasColumnName("idInvestmentRequest");
+            entity.Property(e => e.Bank).HasColumnName("bank");
             entity.Property(e => e.ClientId).HasColumnName("clientId");
             entity.Property(e => e.Date)
                 .HasColumnType("datetime")
@@ -295,6 +305,7 @@ public partial class ProInvestDbContext : DbContext
             entity.Property(e => e.IdMunicipality)
                 .ValueGeneratedNever()
                 .HasColumnName("idMunicipality");
+            entity.Property(e => e.IdState).HasColumnName("idState");
             entity.Property(e => e.Name)
                 .HasMaxLength(45)
                 .HasColumnName("name");
