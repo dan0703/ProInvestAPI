@@ -9,11 +9,11 @@ public partial class InvestmentType
 
     public string TypeName { get; set; } = null!;
 
-    public int AnualInterestRate { get; set; }
+    public float AnualInterestRate { get; set; }
 
-    public int GatReal { get; set; }
+    public float GatReal { get; set; }
 
-    public int GatNominal { get; set; }
+    public float GatNominal { get; set; }
 
     public virtual ICollection<InvestmentSimulator> InvestmentSimulators { get; set; } = new List<InvestmentSimulator>();
 }

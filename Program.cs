@@ -50,6 +50,7 @@ public class Program
                                             Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql")));
 
                         services.AddScoped<UserProvider>();
+                        services.AddScoped<InvestmentTypeProvider>();
                     })
                     .ConfigureAppConfiguration((context, config) =>
                     {

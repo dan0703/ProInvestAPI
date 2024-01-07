@@ -32,8 +32,6 @@ namespace ProInvestAPI.Controllers{
             }
         }
 
-
-
         [ApiExplorerSettings(IgnoreApi = false)]
         [HttpPost("LoginUser")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -66,8 +64,6 @@ namespace ProInvestAPI.Controllers{
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<ActionResult> RegisterUser([FromBody] UserDomain userInformation){
             try{
-
-
                 var result = await _user.Register(userInformation);
                 if(result == null){
                     return StatusCode((int)HttpStatusCode.InternalServerError);

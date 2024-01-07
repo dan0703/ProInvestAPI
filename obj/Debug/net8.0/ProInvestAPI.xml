@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProInvestAPI</name>
+    </assembly>
+    <members>
+        <member name="T:ProInvestAPI.Migrations.notNullColumns">
+            <inheritdoc />
+        </member>
+        <member name="M:ProInvestAPI.Migrations.notNullColumns.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ProInvestAPI.Migrations.notNullColumns.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ProInvestAPI.Migrations.notNullColumns.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
