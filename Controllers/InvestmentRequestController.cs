@@ -10,15 +10,18 @@ namespace ProInvestAPI.Controllers{
     
     [ApiController]
     [Route("[controller]")]
-    public class InvestmentRequestController(IConfiguration config, InvestmentRequestProvider investmentRequest) : ControllerBase
+    public class InvestmentRequestController(IConfiguration config, InvestmentRequestProvider investmentRequest, InvestmentSimulatorProvider investmentSimulator) : ControllerBase
     {
         private IConfiguration config = config;
 
         private InvestmentRequestProvider _investmentRequest = investmentRequest;
 
+        private InvestmentSimulatorProvider _investmentSimulator = investmentSimulator;
+
+
 
         [ApiExplorerSettings(IgnoreApi = false)]
-        [HttpGet("GetInvestmentRequestByFolio{folio}")]
+        [HttpGet("GetInvestmentRequestByFolio/{folio}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<ActionResult> GetInvestmentRequestByFolio(string folio)
@@ -100,12 +103,23 @@ namespace ProInvestAPI.Controllers{
         }
 
         [ApiExplorerSettings(IgnoreApi = false)]
-        [HttpPut("PutInvestmentRequest")]
+        [HttpPost("PutInvestmentRequest")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<ActionResult> PutInvestmentRequest([FromBody] InvestmentRequestDomain investmentRequest)
         {
             try{
+
+                InvestmentSimulator newInvestmentSimulator = new(){
+                    InvestmentType = investmentRequest.InvestmentType,
+                    InvestmentTerm = investmentRequest.InvestmentTerm,
+                    InvestmentAmount = investmentRequest.InvestmentAmout,
+                    EstimatedResult = investmentRequest.StimatedResult,
+                    SimulationDate = DateTime.Now
+                };
+                var investmentResult = await _investmentSimulator.PostInvestmentSimulator(newInvestmentSimulator);
+
+
                 InvestmentRequest newInvestment = new(){
                     InvestmentFolio = Utility.Utility.GenerateFolio(investmentRequest.ClientId),
                     Date = investmentRequest.Date,
@@ -114,7 +128,7 @@ namespace ProInvestAPI.Controllers{
                     OriginOfFounds = investmentRequest.OriginOfFoundsId,
                     Bank = investmentRequest.BankId,
                     ClientId = investmentRequest.ClientId,
-                    InvestmentSimulatorId = investmentRequest.InvestmentSimulatorId
+                    InvestmentSimulatorId = int.Parse(investmentResult)
                 };
                 var result = await _investmentRequest.PostInvestmentRequest(newInvestment);
                 if(result == null){

@@ -149,9 +149,7 @@ public partial class ProInvestDbContext : DbContext
                 .ValueGeneratedNever()
                 .HasColumnName("idDocuments");
             entity.Property(e => e.DocumentTypeId).HasColumnName("documentTypeId");
-            entity.Property(e => e.File)
-                .HasColumnType("blob")
-                .HasColumnName("file");
+            entity.Property(e => e.File).HasColumnName("file");
             entity.Property(e => e.FileFormat)
                 .HasMaxLength(45)
                 .HasColumnName("fileFormat");
@@ -167,11 +165,6 @@ public partial class ProInvestDbContext : DbContext
                 .HasForeignKey(d => d.DocumentTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("documentTypeId");
-
-            entity.HasOne(d => d.InvestmentRequest).WithMany(p => p.Documents)
-                .HasForeignKey(d => d.InvestmentRequestId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("investmentRequestId");
         });
 
         modelBuilder.Entity<DocumentType>(entity =>
@@ -215,9 +208,7 @@ public partial class ProInvestDbContext : DbContext
 
             entity.HasIndex(e => e.Status, "requestStatusId_idx");
 
-            entity.Property(e => e.IdInvestmentRequest)
-                .ValueGeneratedNever()
-                .HasColumnName("idInvestmentRequest");
+            entity.Property(e => e.IdInvestmentRequest).HasColumnName("idInvestmentRequest");
             entity.Property(e => e.Bank).HasColumnName("bank");
             entity.Property(e => e.ClientId).HasColumnName("clientId");
             entity.Property(e => e.Date)
@@ -267,10 +258,11 @@ public partial class ProInvestDbContext : DbContext
                 .HasColumnName("idInvestmentSimulator");
             entity.Property(e => e.EstimatedResult).HasColumnName("estimatedResult");
             entity.Property(e => e.InvestmentAmount).HasColumnName("investmentAmount");
+            entity.Property(e => e.InvestmentSimulatorcol).HasMaxLength(45);
             entity.Property(e => e.InvestmentTerm).HasColumnName("investmentTerm");
             entity.Property(e => e.InvestmentType).HasColumnName("investmentType");
             entity.Property(e => e.SimulationDate)
-                .HasMaxLength(45)
+                .HasColumnType("datetime")
                 .HasColumnName("simulationDate");
 
             entity.HasOne(d => d.InvestmentTypeNavigation).WithMany(p => p.InvestmentSimulators)

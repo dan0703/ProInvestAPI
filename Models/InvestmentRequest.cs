@@ -25,8 +25,6 @@ public partial class InvestmentRequest
 
     public virtual Client Client { get; set; } = null!;
 
-    public virtual ICollection<Document> Documents { get; set; } = new List<Document>();
-
     public virtual InvestmentSimulator InvestmentSimulator { get; set; } = null!;
 
     public virtual OriginOfFound OriginOfFoundsNavigation { get; set; } = null!;

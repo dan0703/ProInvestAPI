@@ -48,6 +48,13 @@ namespace ProInvestAPI.Business{
                 investmentRequest.Ipaddress = temp.Ipaddress;
                 investmentRequest.InvestmentFolio = temp.InvestmentFolio;
                 investmentRequest.InvestmentSimulatorId = temp.InvestmentSimulatorId;
+
+                var temp2 = _connectionModel.InvestmentSimulators.Where(x=> x.IdInvestmentSimulator.Equals(investmentRequest.InvestmentSimulatorId)).FirstOrDefault();
+                investmentRequest.InvestmentAmout = temp2.InvestmentAmount;
+                investmentRequest.InvestmentTerm = temp2.InvestmentTerm;
+                investmentRequest.InvestmentType = temp2.InvestmentType;
+                investmentRequest.StimatedResult = temp2.EstimatedResult;
+                
             }
             catch (Exception e)
             {

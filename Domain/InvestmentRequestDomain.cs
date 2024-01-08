@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.SignalR;
+
 namespace ProInvestAPI.Domain{
     public class InvestmentRequestDomain{
         public int IdInvestmentRequest { get; set; }
@@ -17,5 +19,15 @@ namespace ProInvestAPI.Domain{
         public int OriginOfFoundsId { get; set; }
 
         public int BankId { get; set; }
+
+        public int InvestmentAmout { get; set; }
+
+        public int InvestmentTerm { get; set;}
+
+        public float StimatedResult { get ; set;}
+        public int InvestmentType { get; set; }
+
+        public int DocumentType {get; set;}
+
     }
 }

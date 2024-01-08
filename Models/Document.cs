@@ -20,6 +20,4 @@ public partial class Document
     public byte[] File { get; set; } = null!;
 
     public virtual DocumentType DocumentType { get; set; } = null!;
-
-    public virtual InvestmentRequest InvestmentRequest { get; set; } = null!;
 }
