@@ -6,61 +6,87 @@ using Microsoft.Extensions.Hosting;
 using ProInvestAPI.Business;
 using ProInvestAPI.Domain;
 using ProInvestAPI.Models;
-using System;
-using System.IO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
-public class Program
-{
-    public static void Main(string[] args)
+var builder = WebApplication.CreateBuilder(args);
+
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(builder.Environment.ContentRootPath)
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .Build();
+
+// Add services to the container.
+var key = configuration["JWT:Key"];
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
     {
-        CreateHostBuilder(args).Build().Run();
-    }
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
+        };
+    });
 
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder
-                    .UseStartup<Startup>() // Utiliza la clase Startup
-                    .ConfigureServices((hostContext, services) =>
-                    {
-                        // Configuración adicional de servicios si es necesario
-                        services.AddControllers();
-                        services.AddEndpointsApiExplorer();
-                        services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowProInvestApp", builder =>
+    {
+        builder.WithOrigins("https://proinvestapi.azurewebsites.net")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
 
-                        // Obtén el IConfiguration del hostContext
-                        var configuration = hostContext.Configuration;
+    options.AddPolicy("AllowLocalhost", builder =>
+    {
+        builder.WithOrigins("http://localhost:3000")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});    
+//MySqlConfiguration
+builder.Services.AddDbContext<ProInvestDbContext>(options =>
+                options.UseMySql(
+                    "Server=viaduct.proxy.rlwy.net;Port=26597;Database=ProInvestDB;User=proInvest;Password=Pinv02@c34d;Protocol=TCP;", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql"
+                )));
 
-                        services.Configure<TwilioSettings>(configuration.GetSection("TwilioSettings"));
-                        services.AddSingleton(configuration.Get<TwilioSettings>());
+//add controllers
+builder.Services.AddScoped<UserProvider>();
+builder.Services.AddScoped<UserProvider>();
+builder.Services.AddScoped<InvestmentTypeProvider>();
+builder.Services.AddScoped<BankProvider>();
+builder.Services.AddScoped<DirectionProvider>();
+builder.Services.AddScoped<OriginOfFoundsProvider>();
+builder.Services.AddScoped<InvestmentRequestProvider>();
+builder.Services.AddScoped<InvestmentSimulatorProvider>();
 
-                        services.AddCors(options =>
-                        {
-                            options.AddPolicy("AllowProInvestApp", builder =>
-                            {
-                                builder.WithOrigins("http://ec2-3-137-140-200.us-east-2.compute.amazonaws.com:5039")
-                                       .AllowAnyHeader()
-                                       .AllowAnyMethod();
-                            });
-                        });
+var app = builder.Build();
 
-                        services.AddDbContext<ProInvestDbContext>(options =>
-                            options.UseMySql("Server=viaduct.proxy.rlwy.net;Port=26597;Database=ProInvestDB;User=proInvest;Password=Pinv02@c34d;Protocol=TCP;",
-                                            Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql")));
-
-                        services.AddScoped<UserProvider>();
-                        services.AddScoped<InvestmentTypeProvider>();
-                        services.AddScoped<BankProvider>();
-                        services.AddScoped<DirectionProvider>();
-                        services.AddScoped<OriginOfFoundsProvider>();
-                        services.AddScoped<InvestmentRequestProvider>();
-                        services.AddScoped<InvestmentSimulatorProvider>();
-
-                    })
-                    .ConfigureAppConfiguration((context, config) =>
-                    {
-                        // Configuración adicional si es necesario
-                    });
-            });
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
+
+app.UseHttpsRedirection();
+
+app.UseCors("AllowLocalhost");
+
+app.UseAuthentication();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

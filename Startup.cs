@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-
 public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
@@ -13,6 +9,13 @@ public class Startup
                 builder.WithOrigins("https://proinvestapi.azurewebsites.net")
                        .AllowAnyHeader()
                        .AllowAnyMethod();
+            });
+
+            options.AddPolicy("AllowLocalhost", builder =>
+            {
+                builder.WithOrigins("http://localhost:3000")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
             });
         });
 
@@ -30,8 +33,8 @@ public class Startup
             });
         }
 
-        app.UseCors("AllowProInvestApp");
-
+        app.UseCors(); // Usa todas las políticas CORS configuradas
+        app.UseAuthentication();
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.UseRouting();

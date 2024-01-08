@@ -115,3 +115,6 @@
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/obj/Release/net8.0/ProInvestAPI.xml
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/Newtonsoft.Json.dll
 /Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/Twilio.dll
+/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/Microsoft.IdentityModel.Protocols.dll
+/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/bin/Release/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

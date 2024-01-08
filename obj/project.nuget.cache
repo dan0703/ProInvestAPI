@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "l7Hi9MunNnNLfDQKATB7nIflJlQOQI2aw82CRgRJaIEjioR35aaO0+TI52do9SmObWH2z7l6fSzXkBtcyC5A5g==",
+  "dgSpecHash": "aK20q1Dpdwn1GMc5tCgmQF9p390jS9TAx24AZLuJvABa64fVQgs1+xszsCMXThC+QDVOj1eTnPS+xuEyCbfgYA==",
   "success": true,
   "projectFilePath": "/Users/danjoshuasegura/Documents/Documentos - Dan’s MacBook Air/ProInvestAPI/ProInvestAPI.csproj",
   "expectedPackageFiles": [
     "/Users/danjoshuasegura/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/Users/danjoshuasegura/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/6.0.0/microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/microsoft.aspnetcore.openapi/7.0.14/microsoft.aspnetcore.openapi.7.0.14.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/microsoft.codeanalysis.analyzers/3.3.3/microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
@@ -33,6 +34,8 @@
     "/Users/danjoshuasegura/.nuget/packages/microsoft.identitymodel.abstractions/7.0.0/microsoft.identitymodel.abstractions.7.0.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/microsoft.identitymodel.jsonwebtokens/7.0.0/microsoft.identitymodel.jsonwebtokens.7.0.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/microsoft.identitymodel.logging/7.0.0/microsoft.identitymodel.logging.7.0.0.nupkg.sha512",
+    "/Users/danjoshuasegura/.nuget/packages/microsoft.identitymodel.protocols/6.10.0/microsoft.identitymodel.protocols.6.10.0.nupkg.sha512",
+    "/Users/danjoshuasegura/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/6.10.0/microsoft.identitymodel.protocols.openidconnect.6.10.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/microsoft.identitymodel.tokens/7.0.0/microsoft.identitymodel.tokens.7.0.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "/Users/danjoshuasegura/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",

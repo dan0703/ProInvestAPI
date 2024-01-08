@@ -1,5 +1,6 @@
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ProInvestAPI.Business;
 using ProInvestAPI.Domain;
@@ -43,7 +44,7 @@ namespace ProInvestAPI.Controllers{
             }
         }
 
-
+        [Authorize]
         [ApiExplorerSettings(IgnoreApi = false)]
         [HttpGet("GetInvestmentRequestList")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -71,6 +72,7 @@ namespace ProInvestAPI.Controllers{
             }
         }
 
+        [Authorize]
         [ApiExplorerSettings(IgnoreApi = false)]
         [HttpPut("PutInvestmentRequest")]
         [ProducesResponseType((int)HttpStatusCode.OK)]

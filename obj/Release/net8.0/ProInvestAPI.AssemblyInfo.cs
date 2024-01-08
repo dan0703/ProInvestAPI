@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProInvestAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1be0f933573abfec75fec2a86d99187eb247d374")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3c3cb1ba7271eedd304f691b5daa55486fcda0fa")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProInvestAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProInvestAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

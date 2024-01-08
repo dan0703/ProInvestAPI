@@ -5,7 +5,7 @@ using ProInvestAPI.Business;
 using ProInvestAPI.Models;
 
 namespace ProInvestAPI.Controllers{
-    
+
     [ApiController]
     [Route("[controller]")]
     public class InvestmentTypeController(IConfiguration config, InvestmentTypeProvider investment) : ControllerBase

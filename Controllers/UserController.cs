@@ -7,7 +7,9 @@ namespace ProInvestAPI.Controllers{
     using System.Net;
     using System.Security.Claims;
     using System.Text;
+    using Microsoft.AspNetCore.Authorization;
 
+    
     [ApiController]
     [Route("[controller]")]
     public class UserController(IConfiguration config, UserProvider login) : ControllerBase
