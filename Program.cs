@@ -68,6 +68,7 @@ builder.Services.AddScoped<DirectionProvider>();
 builder.Services.AddScoped<OriginOfFoundsProvider>();
 builder.Services.AddScoped<InvestmentRequestProvider>();
 builder.Services.AddScoped<InvestmentSimulatorProvider>();
+builder.Services.AddScoped<ClientProvider>();
 
 var app = builder.Build();
 

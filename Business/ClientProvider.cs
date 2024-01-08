@@ -13,65 +13,7 @@ namespace ProInvestAPI.Business{
             _connectionModel = connectionModel;
         }
 
-        public async Task<UserDomain> Login(LoginDomain login)
-        {
-            bool canConnect = await _connectionModel.Database.CanConnectAsync();
-            try
-            {
-                if (!canConnect)
-                {
-                    throw new Exception("No se pudo establecer conexión con la base de datos.");
-                }
-                else
-                {
-                    var user = await _connectionModel.Users.Where(x => x.Email == login.Email && x.Password == login.Password).FirstOrDefaultAsync();
-
-                    if (user == null)
-                    {
-                        return null;
-                    }else{
-                        return new UserDomain
-                        {
-                            IdUser = user.IdUser,
-                            Username = user.Username,
-                            Email = user.Email,
-                        };
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-        }
-
-        public (int, List<UserDomain>, string) GetUsers()
-        {
-            int code = 200;
-            List<UserDomain> userList = new List<UserDomain>();
-            string report = "";
-            try
-            {
-                var listTemp = _connectionModel.Users.ToList();
-                foreach (var item in listTemp)
-                {
-                    UserDomain user = new UserDomain
-                    {
-                        Username = item.Username,
-                        IdUser = item.IdUser
-                    };
-                    userList.Add(user);
-                }
-            }
-            catch (Exception e)
-            {
-                code = 500;
-                report = e.Message;
-            }
-            return (code, userList, report);
-        }
-
-        public async Task<string> Register(UserDomain user)
+        public async Task<string> RegisterClient(ClientDomain client)
         {
             using (var transaction = await _connectionModel.Database.BeginTransactionAsync())
             {
@@ -84,27 +26,32 @@ namespace ProInvestAPI.Business{
                         throw new Exception("No se pudo establecer conexión con la base de datos.");
                     }
 
-                    var newUser = new User
+                    var newClient = new Client
                     {
-                        Username = user.Username,
-                        Email = user.Email,
-                        Password = user.Password,
+                        CompanyName = client.CompanyName,
+                        Name = client.Name,
+                        LastName = client.LastName,
+                        Rfc = client.Rfc,
+                        BirthDay = client.BirthDay,
+                        AcademicDegree = client.AcademicDegree,
+                        Profession = client.Profession,
+                        PhoneNumber = client.PhoneNumber,
                     };
 
-                    _connectionModel.Users.Add(newUser);
+                    _connectionModel.Clients.Add(newClient);
 
                     int changes = await _connectionModel.SaveChangesAsync();
 
                     if (changes > 0)
                     {
-                        var userAux = await _connectionModel.Users
-                            .Where(x => x.Email == newUser.Email)
+                        var userAux = await _connectionModel.Clients
+                            .Where(x => x.IdClient == newClient.IdClient)
                             .FirstOrDefaultAsync();
 
                         if (userAux != null)
                         {
                             await transaction.CommitAsync();
-                            return userAux.IdUser.ToString();
+                            return userAux.IdClient.ToString();
                         }
                         else
                         {
@@ -121,7 +68,7 @@ namespace ProInvestAPI.Business{
                 catch (Exception ex)
                 {
                     await transaction.RollbackAsync();
-                    throw new Exception("Error durante la transacción de registro de usuario.", ex);
+                    throw new Exception("Error durante la transacción de registro de cliente.", ex);
                 }
             }
         }

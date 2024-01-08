@@ -18,6 +18,34 @@ namespace ProInvestAPI.Controllers{
 
 
         [ApiExplorerSettings(IgnoreApi = false)]
+        [HttpGet("GetInvestmentRequestByFolio{folio}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<ActionResult> GetInvestmentRequestByFolio(string folio)
+        {
+            try
+            {
+                (int code, InvestmentRequestDomain investmentRequest, string report) = _investmentRequest.GetInvestmentRequestByFolio(folio);
+                if (code == 200)
+                {
+                    return Ok(
+                        investmentRequest
+                    );
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
+        }
+
+
+        [ApiExplorerSettings(IgnoreApi = false)]
         [HttpGet("GetInvestmentRequestByUserId/{IdUser}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
@@ -44,7 +72,6 @@ namespace ProInvestAPI.Controllers{
             }
         }
 
-        [Authorize]
         [ApiExplorerSettings(IgnoreApi = false)]
         [HttpGet("GetInvestmentRequestList")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -72,7 +99,6 @@ namespace ProInvestAPI.Controllers{
             }
         }
 
-        [Authorize]
         [ApiExplorerSettings(IgnoreApi = false)]
         [HttpPut("PutInvestmentRequest")]
         [ProducesResponseType((int)HttpStatusCode.OK)]

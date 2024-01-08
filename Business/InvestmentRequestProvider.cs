@@ -1,5 +1,6 @@
 using System.Globalization;
 using Microsoft.EntityFrameworkCore;
+using ProInvestAPI.Domain;
 using ProInvestAPI.Models;
 
 namespace ProInvestAPI.Business{
@@ -28,6 +29,32 @@ namespace ProInvestAPI.Business{
                 report = e.Message;
             }
             return (code, investmentRequestList, report);
+        }
+
+        public (int, InvestmentRequestDomain, string) GetInvestmentRequestByFolio(string folio)
+        {
+            int code = 200;
+            InvestmentRequestDomain investmentRequest = new();
+            string report = "";
+            try
+            {
+                var temp = _connectionModel.InvestmentRequests.Where(x=> x.InvestmentFolio.Equals(folio)).FirstOrDefault();
+                investmentRequest.IdInvestmentRequest = temp.IdInvestmentRequest;
+                investmentRequest.BankId = temp.Bank;
+                investmentRequest.Status = temp.Status;
+                investmentRequest.ClientId = temp.ClientId;
+                investmentRequest.Date = temp.Date;
+                investmentRequest.OriginOfFoundsId = temp.OriginOfFounds;
+                investmentRequest.Ipaddress = temp.Ipaddress;
+                investmentRequest.InvestmentFolio = temp.InvestmentFolio;
+                investmentRequest.InvestmentSimulatorId = temp.InvestmentSimulatorId;
+            }
+            catch (Exception e)
+            {
+                code = 500;
+                report = e.Message;
+            }
+            return (code, investmentRequest, report);
         }
         
         public (int, List<InvestmentRequest>, string) GetInvestmentRequestList()
@@ -78,7 +105,7 @@ namespace ProInvestAPI.Business{
                     if (investmentRequestAux != null)
                     {
                         await transaction.CommitAsync();
-                        return investmentRequestAux.IdInvestmentRequest.ToString();
+                        return investmentRequestAux.InvestmentFolio.ToString();
                     }
                     else
                     {
