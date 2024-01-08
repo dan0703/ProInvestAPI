@@ -15,7 +15,7 @@ public partial class InvestmentSimulator
 
     public int EstimatedResult { get; set; }
 
-    public string SimulationDate { get; set; } = null!;
+    public DateTime SimulationDate { get; set; } 
 
     public virtual ICollection<InvestmentRequest> InvestmentRequests { get; set; } = new List<InvestmentRequest>();
 

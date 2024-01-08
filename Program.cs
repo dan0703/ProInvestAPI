@@ -39,7 +39,7 @@ public class Program
                         {
                             options.AddPolicy("AllowProInvestApp", builder =>
                             {
-                                builder.WithOrigins("https://proinvestapi.azurewebsites.net")
+                                builder.WithOrigins("http://ec2-3-137-140-200.us-east-2.compute.amazonaws.com:5039")
                                        .AllowAnyHeader()
                                        .AllowAnyMethod();
                             });
@@ -54,6 +54,8 @@ public class Program
                         services.AddScoped<BankProvider>();
                         services.AddScoped<DirectionProvider>();
                         services.AddScoped<OriginOfFoundsProvider>();
+                        services.AddScoped<InvestmentRequestProvider>();
+                        services.AddScoped<InvestmentSimulatorProvider>();
 
                     })
                     .ConfigureAppConfiguration((context, config) =>
